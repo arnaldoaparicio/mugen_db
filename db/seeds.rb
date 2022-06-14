@@ -7,10 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 series1 = Character.create!(origin: 'The Fallen Angel')
-    series2 = Character.create!(origin: 'Capcom vs. SNK Series')
-    fighter = Fighter.create!(name: 'Ryu', character_id: series2.id)
-    fighter2 = Fighter.create!(name: 'Guile', character_id: series2.id)
-    fighter3 = Fighter.create!(name: 'Roche', character_id: series1.id)
+series2 = Character.create!(origin: 'Capcom vs. SNK Series')
+fighter = Fighter.create!(name: 'Ryu', character_id: series2.id)
+fighter2 = Fighter.create!(name: 'Guile', character_id: series2.id)
+fighter3 = Fighter.create!(name: 'Roche', character_id: series1.id)
 
-    variant1 = FighterVariant.create!(name: 'Ryu', author: 'Warusaki3', website: 'http://mugenguild.com/', game_name: 'Capcom vs. SNK 2', image: 'imgur', fighter_id: fighter.id)
-    variant2 = FighterVariant.create!(name: 'Ryu', author: 'Phantom.of.the.Server', website: 'https://mugen-infantry.net/', game_name: 'Capcom vs. SNK', image: 'photobucket', fighter_id: fighter.id)
+variant1 = FighterVariant.create!(name: 'Ryu', author: 'Warusaki3', website: 'http://mugenguild.com/',
+                                  game_name: 'Capcom vs. SNK 2', image: 'imgur', fighter_id: fighter.id)
+variant2 = FighterVariant.create!(name: 'Ryu', author: 'Phantom.of.the.Server',
+                                  website: 'https://mugen-infantry.net/', game_name: 'Capcom vs. SNK', image: 'photobucket', fighter_id: fighter.id)
