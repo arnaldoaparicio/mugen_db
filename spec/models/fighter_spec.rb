@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Fighter, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'relationships' do
+    it { should belong_to :character }
+    it { should have_many :fighter_variants }
+  end
 end
