@@ -62,7 +62,10 @@ RSpec.describe 'Characters API' do
     expect(fighter_variants).to have_key(:data)
 
     fighter_variants[:data].each do |variant|
-      
+      expect(variant[:attributes]).to have_key(:name)
+      expect(variant[:attributes]).to have_key(:author)
+      expect(variant[:attributes]).to have_key(:game_name)
+      expect(variant[:attributes]).to have_key(:image)
     end
   end
 end
