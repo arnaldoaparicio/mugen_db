@@ -35,6 +35,5 @@ RSpec.describe 'FighterVariants API' do
 
         expect(response).to_not be_successful
         expect(response.status).to eq(400)
-
     end
 end
