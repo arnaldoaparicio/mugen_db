@@ -15,6 +15,3 @@ fighter4 = Fighter.create!(name: 'Kyo', character_id: series2.id)
 
 variant1 = FighterVariant.create!(name: 'Ryu', author: 'Warusaki3', website: 'http://mugenguild.com/',
                                   game_name: 'Capcom vs. SNK 2', image: 'https://mugen-db-demo.s3.amazonaws.com/ryu_by_warusaki3.png', fighter_id: fighter.id)
-variant2 = FighterVariant.create!(name: 'Kyo', author: 'Warusaki3',
-                                  website: 'https://mugen-infantry.net/', game_name: 'Capcom vs. SNK', image: 'https://mugen-db-demo.s3.amazonaws.com/kyo_by_warusaki.png', fighter_id: fighter4.id)
-variant3 = FighterVariant.create!(name: 'Kyo', author: 'Jmorphman', website: 'https://mugenguild.com/', game_name: 'Capcom vs. SNK edit', image: 'https://mugen-db-demo.s3.amazonaws.com/kyo_by_jmorphman.png', fighter_id: fighter4.id)
