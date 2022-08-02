@@ -32,7 +32,7 @@ RSpec.describe 'Characters API' do
     fighter3 = Fighter.create!(name: 'Roche', character_id: series1.id)
 
     get "/api/v1/characters/#{series2.id}"
-    
+
     fighters = JSON.parse(response.body, symbolize_names: true)
     expect(response).to be_successful
 
@@ -58,7 +58,7 @@ RSpec.describe 'Characters API' do
 
     expect(response).to be_successful
 
-    
+
     expect(fighter_variants).to have_key(:data)
 
     fighter_variants[:data].each do |variant|
@@ -67,5 +67,20 @@ RSpec.describe 'Characters API' do
       expect(variant[:attributes]).to have_key(:game_name)
       expect(variant[:attributes]).to have_key(:image)
     end
+  end
+
+  it 'creates a new character' do
+    character_params = { origin: 'Marvel vs. Series' }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+    post '/api/v1/characters', headers: headers, params: JSON.generate(character: character_params)
+    expect(response).to be_successful
+    expect(response.status).to eq(201)
+
+    character = JSON.parse(response.body, symbolize_names: true)
+
+    expect(character).to have_key(:data)
+    expect(character[:data]).to have_key(:attributes)
+
+    expect(character[:data][:attributes]).to have_key(:origin)
   end
 end
