@@ -1,6 +1,5 @@
 class Api::V1::CharactersController < ApplicationController
   def index
-
     if params[:series_id].present? && params[:fighter_id].present?
       series = Character.find(params[:series_id])
       fighter = series.fighters.find(params[:fighter_id])
