@@ -4,10 +4,7 @@ RSpec.describe 'Fighters API' do
   it 'creates a new fighter' do
     series1 = Character.create!(origin: 'Marvel vs Series/X-COTA')
 
-    fighter_params = {
-      name: 'Spiderman',
-      character_id: series1.id
-    }
+    fighter_params = { name: 'Spiderman', character_id: series1.id }
 
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
@@ -24,7 +21,7 @@ RSpec.describe 'Fighters API' do
   end
 
   it 'does not create a new fighter' do
-    fighter_params = { name: 'Spiderman'}
+    fighter_params = { name: 'Spiderman' }
 
     headers = { 'CONTENT-TYPE' => 'application/json' }
 
