@@ -16,6 +16,13 @@ amazon:
   region: us-east-1
   bucket: <%= ENV["AWS_BUCKET"] %>
 
+amazon_prod:
+  service: S3
+  access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
+  secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
+  region: us-east-1
+  bucket: <%= ENV["AWS_BUCKET_PROD"]
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
