@@ -15,6 +15,6 @@ class Api::V1::FighterVariantsController < ApplicationController
 
   private
   def fighter_variant_params
-    params.require(:fighter_variant).permit(:name, :author, :website, :game_name, :image, :fighter_id, :avatar)
+    params.require(:fighter_variant).permit(:name, :author, :website, :game_name, :fighter_id, :avatar)
   end
 end
