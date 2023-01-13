@@ -1,4 +1,4 @@
 class FighterVariantSerializer
   include JSONAPI::Serializer
-  attributes :name, :author, :website, :game_name, :image, :image_url
+  attributes :name, :author, :website, :game_name, :image_url
 end
