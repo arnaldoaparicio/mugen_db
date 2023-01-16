@@ -58,7 +58,6 @@ RSpec.describe 'Characters API' do
 
     expect(response).to be_successful
 
-
     expect(fighter_variants).to have_key(:data)
 
     fighter_variants[:data].each do |variant|
