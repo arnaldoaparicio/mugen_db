@@ -24,8 +24,7 @@ describe User, type: :model do
     end
 
     it 'encrypts password' do
-        user = User.create(email: 'tanner@mail.com', password: 'blahblah', password_confirmation: 'blahblah', admin: true)\
-
+        user = User.create(email: 'tanner@mail.com', password: 'blahblah', password_confirmation: 'blahblah', admin: true)
         expect(user).to_not have_attribute(:password)
         expect(user).to_not have_attribute(:password_confirmation)
         expect(user.password_digest).to_not eq('blahblah')
