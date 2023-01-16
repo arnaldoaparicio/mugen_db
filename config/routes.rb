@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :characters, only: [:index, :show, :create]
       resources :fighters, only: [:create]
       resources :fighter_variants, only: [:create]
+      resources :users, only: [:create]
     end
   end
   get '/api/v1/characters/:series_id/:fighter_id', to: 'api/v1/characters#index'
