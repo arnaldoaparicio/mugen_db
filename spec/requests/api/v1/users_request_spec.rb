@@ -15,7 +15,7 @@ RSpec.describe 'User API' do
   it 'logins to existing account' do
     user = User.create(email: 'jake@mail.com', password: 'blahblah', password_confirmation: 'blahblah', admin: true)
 
-    user_params = { email: 'jake@mail.com', password: 'blah' }
+    user_params = { email: 'jake@mail.com', password: 'blahblah' }
 
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
