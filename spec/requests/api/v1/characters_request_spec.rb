@@ -49,8 +49,8 @@ RSpec.describe 'Characters API' do
   it 'shows the fighter variants' do
     series2 = Character.create!(origin: 'Capcom vs. SNK Series')
     fighter = Fighter.create!(name: 'Ryu', character_id: series2.id)
-    variant1 = FighterVariant.create!(name: 'Ryu', author: 'Warusaki3', website: 'http://mugenguild.com/', game_name: 'Capcom vs. SNK 2', image: 'imgur', fighter_id: fighter.id)
-    variant2 = FighterVariant.create!(name: 'Ryu', author: 'Phantom.of.the.Server', website: 'https://mugen-infantry.net/', game_name: 'Capcom vs. SNK', image: 'photobucket', fighter_id: fighter.id)
+    variant1 = FighterVariant.create!(name: 'Ryu', author: 'Warusaki3', website: 'http://mugenguild.com/', game_name: 'Capcom vs. SNK 2', fighter_id: fighter.id)
+    variant2 = FighterVariant.create!(name: 'Ryu', author: 'Phantom.of.the.Server', website: 'https://mugen-infantry.net/', game_name: 'Capcom vs. SNK', fighter_id: fighter.id)
 
     get "/api/v1/characters/#{series2.id}/#{fighter.id}"
 
@@ -64,7 +64,6 @@ RSpec.describe 'Characters API' do
       expect(variant[:attributes]).to have_key(:name)
       expect(variant[:attributes]).to have_key(:author)
       expect(variant[:attributes]).to have_key(:game_name)
-      expect(variant[:attributes]).to have_key(:image)
     end
   end
 
