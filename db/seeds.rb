@@ -14,4 +14,4 @@ fighter3 = Fighter.create!(name: 'Roche', character_id: series1.id)
 fighter4 = Fighter.create!(name: 'Kyo', character_id: series2.id)
 
 variant1 = FighterVariant.create!(name: 'Ryu', author: 'Warusaki3', website: 'http://mugenguild.com/',
-                                  game_name: 'Capcom vs. SNK 2', image: 'https://mugen-db-demo.s3.amazonaws.com/ryu_by_warusaki3.png', fighter_id: fighter.id)
+                                  game_name: 'Capcom vs. SNK 2', fighter_id: fighter.id)
