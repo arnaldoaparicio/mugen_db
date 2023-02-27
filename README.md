@@ -2,6 +2,10 @@
 
 This is the untitled MUGEN DB backend API. Created with Ruby on Rails.
 
+Server side of the backend is [here](https://mugen-db-be.fly.dev/api/v1/characters).
+
+Please go [here](https://github.com/arnaldoaparicio/mugen_db_fe) if you would like to see the frontend of this project.
+
 
 ## What is MUGEN?
 MUGEN is a 2d fighting game engine created by a company named Elecbyte. The purpose is for the user to create their own 2d fighting game. It is highly customizable, thus allowing the user to make changes to anything they desire. The sky is the limit.
