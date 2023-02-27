@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
     if user && user.authenticate(user_params[:password])
       render json: UserSerializer.new(user), status: 200
     else
-      render json: { data: 'Login failed' }, status: 400
+      render json: { data: { id: 'Login failed', attributes: { email: 'Login failed', admin: 'Login failed'} } }, status: 400
     end
   end
 
