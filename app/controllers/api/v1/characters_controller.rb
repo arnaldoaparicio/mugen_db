@@ -6,7 +6,7 @@ class Api::V1::CharactersController < ApplicationController
       variants = fighter.fighter_variants
       render json: FighterVariantSerializer.new(variants)
     else
-      render json: CharacterSerializer.new(Character.all.character_name)
+      render json: CharacterSerializer.new(Character.all.origin_name)
     end
   end
 
