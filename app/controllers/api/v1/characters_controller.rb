@@ -12,7 +12,7 @@ class Api::V1::CharactersController < ApplicationController
 
   def show
     character = Character.find(params[:id])
-    render json: FighterSerializer.new(character.fighters)
+    render json: FighterSerializer.new(character.fighters.alphabetical_name)
   end
 
   def create
