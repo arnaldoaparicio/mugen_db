@@ -1,11 +1,11 @@
 class Character < ApplicationRecord
-  has_many :fighters
+  has_many :fighters, -> {includes(:character)}
   validates_presence_of :origin
   scope :origin_name , -> { order(origin: :asc) }
 
-  def series_fighters
-    fighters.each do |fighter|
-      fighter.name
-    end
-  end
+  # def series_fighters
+  #   fighters.each do |fighter|
+  #     fighter.name
+  #   end
+  # end
 end
