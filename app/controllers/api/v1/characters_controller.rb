@@ -24,6 +24,16 @@ class Api::V1::CharactersController < ApplicationController
     end
   end
 
+  def update
+    # require 'pry'; binding.pry
+    character = Character.find(params[:id])
+    if character.update(character_params)
+      render json: CharacterSerializer.new(character)
+    else
+      render status: 422
+    end
+  end
+
   private
 
   def character_params
