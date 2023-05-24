@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 RSpec.describe 'Characters API' do
   it 'shows all series for characters' do
     series1 = Character.create!(origin: 'Marvel Vs. Series')
@@ -80,5 +81,17 @@ RSpec.describe 'Characters API' do
     expect(character[:data]).to have_key(:attributes)
 
     expect(character[:data][:attributes]).to have_key(:origin)
+  end
+
+  it 'edits an existing character origin' do
+    character = Character.create!(origin: 'Fatal Fury')
+    character_params = { origin: 'Fatal Fury Special' }
+
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+    patch "/api/v1/characters/#{character.id}", headers: headers, params: JSON.generate(character_params)
+
+    updated_character = Character.find(character.id)
+
+    expect(updated_character.origin).to eq('Fatal Fury Special')
   end
 end
