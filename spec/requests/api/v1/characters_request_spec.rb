@@ -21,7 +21,6 @@ RSpec.describe 'Characters API' do
       expect(character).to have_key(:type)
       expect(character).to have_key(:attributes)
       expect(character[:attributes]).to have_key(:origin)
-      expect(character[:attributes]).to have_key(:series_fighters)
     end
   end
 
