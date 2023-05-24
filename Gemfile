@@ -37,7 +37,6 @@ group :development, :test do
   gem 'figaro'
   gem 'pry'
   gem 'rspec-rails'
-  gem 'simplecov'
 end
 
 group :development do
@@ -50,6 +49,7 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'simplecov', require: false
 end
 
 
