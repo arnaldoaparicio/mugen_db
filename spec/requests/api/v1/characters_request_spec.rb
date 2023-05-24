@@ -82,7 +82,7 @@ RSpec.describe 'Characters API' do
     expect(character[:data][:attributes]).to have_key(:origin)
   end
 
-  it 'edits an existing character origin' do
+  it 'updates an existing character origin' do
     character = Character.create!(origin: 'Fatal Fury')
     character_params = { origin: 'Fatal Fury Special' }
 
