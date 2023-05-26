@@ -45,7 +45,7 @@ RSpec.describe 'Fighters API' do
 
     new_spiderman = Fighter.find(spiderman.id)
 
-    expect(reponse).to be_successful
+    expect(response).to be_successful
     expect(new_spiderman.name).to eq('Spider-Man')
   end
 end
