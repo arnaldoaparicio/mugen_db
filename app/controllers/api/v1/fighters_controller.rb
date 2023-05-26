@@ -8,6 +8,15 @@ class Api::V1::FightersController < ApplicationController
     end
   end
 
+  def update
+    fighter = Fighter.find(params[:fighter_id])
+    if fighter.update(fighter_params)
+      render json: FighterSerializer.new(fighter)
+    else
+      render status: 422
+    end
+  end
+
   private
 
   def fighter_params
