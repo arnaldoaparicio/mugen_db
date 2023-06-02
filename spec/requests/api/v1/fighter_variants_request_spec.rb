@@ -60,4 +60,26 @@ RSpec.describe 'FighterVariants API' do
     expect(response).to be_successful
     expect(new_fighter_variant.name).to eq('MvC2 Ryu')
   end
+
+    it "updates an existing fighter's name" do
+    series1 = Character.create!(origin: 'Marvel Vs. Series')
+    fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
+    fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
+
+    expect(fighter_variant_ryu.author).to eq('Kamekaze')
+
+    fighter_variant_params = { name: 'Ryu',
+                               author: 'Phantom.of.the.Server',
+                               website: 'http://mugenguild.com',
+                               game_name: 'Marvel vs. Capcom 2',
+                               fighter_id: fighter.id }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+
+    patch '/api/v1/characters/:series_id/:fighter_id/:fighter_variant_id'
+
+    new_fighter_variant = FighterVariant.find(fighter_variant_ryu.id)
+
+    expect(response).to be_successful
+    expect(new_fighter_variant.author).to eq('Phantom.of.the.Server')
+  end
 end
