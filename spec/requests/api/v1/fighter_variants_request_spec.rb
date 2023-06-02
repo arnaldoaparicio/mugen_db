@@ -61,7 +61,7 @@ RSpec.describe 'FighterVariants API' do
     expect(new_fighter_variant.name).to eq('MvC2 Ryu')
   end
 
-    it "updates an existing fighter's name" do
+    it "updates an existing fighter's author" do
     series1 = Character.create!(origin: 'Marvel Vs. Series')
     fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
     fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
