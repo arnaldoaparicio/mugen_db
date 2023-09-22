@@ -21,3 +21,7 @@ The purpose of this is to provide a large collection of links for the user to ea
 This uses Amazon S3 to handle file storage.
 
 For more in-depth information regarding challenges and goals, check out this log I created: https://gist.github.com/arnaldoaparicio/c91ffdefd2573c21ba2c3c921760f8e1
+
+## UPDATE 09/22/2023
+- Upgraded Ruby to version 3.2.2 and Rails to version 7.0.5
+- All changes are now live
