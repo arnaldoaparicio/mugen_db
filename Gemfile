@@ -15,7 +15,7 @@ gem 'puma', '>= 5.6.8'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem "nokogiri", ">= 1.16.2"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
