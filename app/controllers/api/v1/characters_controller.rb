@@ -36,6 +36,6 @@ class Api::V1::CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:origin)
+    params.require(:character).permit(:origin, :origin_tag)
   end
 end
