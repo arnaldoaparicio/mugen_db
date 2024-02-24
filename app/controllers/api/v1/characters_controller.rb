@@ -6,13 +6,13 @@ class Api::V1::CharactersController < ApplicationController
       variants = fighter.fighter_variants
       render json: FighterVariantSerializer.new(variants)
     else
-      render json: CharacterSerializer.new(Character.all.origin_name)
+      render json: CharacterSerializer.new(Character.all.origin_name), status: 200
     end
   end
 
   def show
     character = Character.find(params[:id])
-    render json: FighterSerializer.new(character.fighters.alphabetical_name)
+    render json: FighterSerializer.new(character.fighters.alphabetical_name), status: 200
   end
 
   def create
