@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_130514) do
 
   create_table "characters", force: :cascade do |t|
     t.string "origin"
+    t.string "origin_tag"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
   end
