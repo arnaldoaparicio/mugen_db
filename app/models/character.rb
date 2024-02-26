@@ -5,7 +5,10 @@ class Character < ApplicationRecord
   scope :origin_name , -> { order(origin: :asc) }
 
   after_validation :set_slug, only: [:create, :update]
-
+  
+  def to_param
+    "#{id}-#{slug}"
+  end
   private
 
   def set_slug
