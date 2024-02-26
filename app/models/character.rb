@@ -9,6 +9,7 @@ class Character < ApplicationRecord
   private
 
   def set_slug
-    self.slug = title.to_s.parameterize
+    self.slug = origin_tag.to_s.parameterize
   end
+
 end
