@@ -11,7 +11,7 @@ class Api::V1::CharactersController < ApplicationController
   end
 
   def show
-    character = Character.find(params[:id])
+    character = Character.find_by_id(params[:id])
     render json: FighterSerializer.new(character.fighters.alphabetical_name), status: 200
   end
 
