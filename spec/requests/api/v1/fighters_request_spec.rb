@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Fighters API' do
   it 'creates a new fighter' do
-    series1 = Character.create!(origin: 'Marvel vs Series/X-COTA')
+    series1 = Character.create!(origin: 'Marvel vs Series/X-COTA', origin_tag: 'mvsx')
 
     fighter_params = { name: 'Spiderman', character_id: series1.id }
 
@@ -32,7 +32,7 @@ RSpec.describe 'Fighters API' do
   end
 
   it 'edits an existing fighter' do
-    mvc = Character.create!(origin: 'Marvel vs. Capcom')
+    mvc = Character.create!(origin: 'Marvel vs. Capcom', origin_tag: 'mvc')
     spiderman = Fighter.create!(name: 'Spyda-man', character_id: mvc.id)
 
     expect(spiderman.name).to eq('Spyda-man')
