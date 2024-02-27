@@ -53,7 +53,7 @@ RSpec.describe 'FighterVariants API' do
                                fighter_id: fighter.id }
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
-    patch "/api/v1/characters/#{series1.id}/#{fighter.id}/#{fighter_variant_ryu.id}", headers: headers, params: JSON.generate(fighter_variant: fighter_variant_params)
+    patch "/api/v1/characters/#{series1.to_param}/#{fighter.id}/#{fighter_variant_ryu.id}", headers: headers, params: JSON.generate(fighter_variant: fighter_variant_params)
   
     new_fighter_variant = FighterVariant.find(fighter_variant_ryu.id)
 
@@ -75,7 +75,7 @@ RSpec.describe 'FighterVariants API' do
                                fighter_id: fighter.id }
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
-    patch "/api/v1/characters/#{series1.id}/#{fighter.id}/#{fighter_variant_ryu.id}", headers: headers, params: JSON.generate(fighter_variant: fighter_variant_params)
+    patch "/api/v1/characters/#{series1.to_param}/#{fighter.id}/#{fighter_variant_ryu.id}", headers: headers, params: JSON.generate(fighter_variant: fighter_variant_params)
 
     new_fighter_variant = FighterVariant.find(fighter_variant_ryu.id)
 
