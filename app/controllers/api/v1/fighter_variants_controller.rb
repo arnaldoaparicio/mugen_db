@@ -13,6 +13,15 @@ class Api::V1::FighterVariantsController < ApplicationController
     end
   end
 
+  def update
+    fighter_variant = FighterVariant.find(params[:fighter_variant_id])
+    if fighter_variant.update(fighter_variant_params)
+      render json: FighterVariantSerializer.new(fighter_variant)
+    else
+      render status: 422
+    end
+  end
+
   private
   def fighter_variant_params
     params.require(:fighter_variant).permit(:name, :author, :website, :game_name, :fighter_id, :avatar)

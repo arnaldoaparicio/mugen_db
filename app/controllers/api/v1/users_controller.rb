@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    render json: UserSerializer.new(user)
+    render json: UserSerializer.new(user), status: 200
   end
 
   def login

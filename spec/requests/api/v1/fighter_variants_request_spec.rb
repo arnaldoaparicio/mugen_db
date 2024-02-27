@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'FighterVariants API' do
   it 'creates a new fighter variant' do
-    series1 = Character.create!(origin: 'Marvel Vs. Series')
+    series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
     fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
 
     fighter_variant_params = { name: 'Ryu',
@@ -25,7 +25,7 @@ RSpec.describe 'FighterVariants API' do
   end
 
   it 'does not create a fighter' do
-    series1 = Character.create!(origin: 'Marvel Vs. Series')
+    series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
 
     fighter_variant_params = { name: 'Ryu',
                                author: 'Kamekaze',
@@ -40,7 +40,7 @@ RSpec.describe 'FighterVariants API' do
   end
 
   it "updates an existing fighter's name" do
-    series1 = Character.create!(origin: 'Marvel Vs. Series')
+    series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
     fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
     fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
 
@@ -53,8 +53,8 @@ RSpec.describe 'FighterVariants API' do
                                fighter_id: fighter.id }
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
-    patch '/api/v1/characters/:series_id/:fighter_id/:fighter_variant_id'
-
+    patch "/api/v1/characters/#{series1.to_param}/#{fighter.id}/#{fighter_variant_ryu.id}", headers: headers, params: JSON.generate(fighter_variant: fighter_variant_params)
+  
     new_fighter_variant = FighterVariant.find(fighter_variant_ryu.id)
 
     expect(response).to be_successful
@@ -62,7 +62,7 @@ RSpec.describe 'FighterVariants API' do
   end
 
     it "updates an existing fighter's author" do
-    series1 = Character.create!(origin: 'Marvel Vs. Series')
+    series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
     fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
     fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
 
@@ -75,7 +75,7 @@ RSpec.describe 'FighterVariants API' do
                                fighter_id: fighter.id }
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
-    patch '/api/v1/characters/:series_id/:fighter_id/:fighter_variant_id'
+    patch "/api/v1/characters/#{series1.to_param}/#{fighter.id}/#{fighter_variant_ryu.id}", headers: headers, params: JSON.generate(fighter_variant: fighter_variant_params)
 
     new_fighter_variant = FighterVariant.find(fighter_variant_ryu.id)
 

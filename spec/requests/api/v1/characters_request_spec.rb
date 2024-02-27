@@ -3,10 +3,8 @@ require 'rails_helper'
 
 RSpec.describe 'Characters API' do
   it 'shows all series for characters' do
-    series1 = Character.create!(origin: 'Marvel Vs. Series')
-    series2 = Character.create!(origin: 'Capcom vs. SNK Series')
-    fighter = Fighter.create!(name: 'Ryu', character_id: series2.id)
-    fighter2 = Fighter.create!(name: 'Guile', character_id: series2.id)
+    series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
+    series2 = Character.create!(origin: 'Capcom vs. SNK Series', origin_tag: 'cvs')
 
     get '/api/v1/characters'
 
@@ -21,12 +19,13 @@ RSpec.describe 'Characters API' do
       expect(character).to have_key(:type)
       expect(character).to have_key(:attributes)
       expect(character[:attributes]).to have_key(:origin)
+      expect(character[:attributes]).to have_key(:origin_tag)
     end
   end
 
   it 'has game series with several fighters/characters' do
-    series1 = Character.create!(origin: 'The Fallen Angel')
-    series2 = Character.create!(origin: 'Capcom vs. SNK Series')
+    series1 = Character.create!(origin: 'The Fallen Angel', origin_tag: 'tfa')
+    series2 = Character.create!(origin: 'Capcom vs. SNK Series', origin_tag: 'cvs')
     fighter = Fighter.create!(name: 'Ryu', character_id: series2.id)
     fighter2 = Fighter.create!(name: 'Guile', character_id: series2.id)
     fighter3 = Fighter.create!(name: 'Roche', character_id: series1.id)
@@ -47,7 +46,7 @@ RSpec.describe 'Characters API' do
   end
 
   it 'shows the fighter variants' do
-    series2 = Character.create!(origin: 'Capcom vs. SNK Series')
+    series2 = Character.create!(origin: 'Capcom vs. SNK Series', origin_tag: 'cvs')
     fighter = Fighter.create!(name: 'Ryu', character_id: series2.id)
     variant1 = FighterVariant.create!(name: 'Ryu', author: 'Warusaki3', website: 'http://mugenguild.com/', game_name: 'Capcom vs. SNK 2', fighter_id: fighter.id)
     variant2 = FighterVariant.create!(name: 'Ryu', author: 'Phantom.of.the.Server', website: 'https://mugen-infantry.net/', game_name: 'Capcom vs. SNK', fighter_id: fighter.id)
@@ -68,7 +67,7 @@ RSpec.describe 'Characters API' do
   end
 
   it 'creates a new character' do
-    character_params = { origin: 'Marvel vs. Series' }
+    character_params = { origin: 'Marvel vs. Series', origin_tag: 'mvs' }
     headers = { 'CONTENT_TYPE' => 'application/json' }
     post '/api/v1/characters', headers: headers, params: JSON.generate(character: character_params)
     expect(response).to be_successful
@@ -80,11 +79,12 @@ RSpec.describe 'Characters API' do
     expect(character[:data]).to have_key(:attributes)
 
     expect(character[:data][:attributes]).to have_key(:origin)
+    expect(character[:data][:attributes]).to have_key(:origin_tag)
   end
 
   it 'updates an existing character origin' do
-    character = Character.create!(origin: 'Fatal Fury')
-    character_params = { origin: 'Fatal Fury Special' }
+    character = Character.create!(origin: 'Fatal Fury', origin_tag: 'ff')
+    character_params = { origin: 'Fatal Fury Special', origin_tag: 'ffs' }
 
     headers = { 'CONTENT_TYPE' => 'application/json' }
     patch "/api/v1/characters/#{character.id}", headers: headers, params: JSON.generate(character_params)
@@ -92,5 +92,6 @@ RSpec.describe 'Characters API' do
     updated_character = Character.find(character.id)
 
     expect(updated_character.origin).to eq('Fatal Fury Special')
+    expect(updated_character.origin_tag).to eq('ffs')
   end
 end
