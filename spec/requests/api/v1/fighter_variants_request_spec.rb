@@ -24,7 +24,7 @@ RSpec.describe 'FighterVariants API' do
     expect(created_fighter_variant[:data][:attributes][:game_name]).to eq('Marvel vs. Capcom 2')
   end
 
-  it 'does not create a fighter' do
+  it 'does not create a fighter variant' do
     series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
 
     fighter_variant_params = { name: 'Ryu',
@@ -39,7 +39,7 @@ RSpec.describe 'FighterVariants API' do
     expect(response.status).to eq(400)
   end
 
-  it "updates an existing fighter's name" do
+  it "updates an existing fighter variant's name" do
     series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
     fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
     fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
@@ -61,7 +61,7 @@ RSpec.describe 'FighterVariants API' do
     expect(new_fighter_variant.name).to eq('MvC2 Ryu')
   end
 
-    it "updates an existing fighter's author" do
+    it "updates an existing fighter variant's author" do
     series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
     fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
     fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
@@ -81,5 +81,27 @@ RSpec.describe 'FighterVariants API' do
 
     expect(response).to be_successful
     expect(new_fighter_variant.author).to eq('Phantom.of.the.Server')
+  end
+
+  it 'does not update an existing fighter variant' do
+    series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
+    fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
+    fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
+
+    expect(fighter_variant_ryu.author).to eq('Kamekaze')
+
+    fighter_variant_params = { name: 'Ryu',
+                               author: '',
+                               website: 'http://mugenguild.com',
+                               game_name: '',
+                               fighter_id: fighter.id }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+
+    patch "/api/v1/characters/#{series1.to_param}/#{fighter.id}/#{fighter_variant_ryu.id}", headers: headers, params: JSON.generate(fighter_variant: fighter_variant_params)
+
+    new_fighter_variant = FighterVariant.find(fighter_variant_ryu.id)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(422)
   end
 end
