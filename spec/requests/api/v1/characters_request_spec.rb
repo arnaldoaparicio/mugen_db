@@ -82,6 +82,15 @@ RSpec.describe 'Characters API' do
     expect(character[:data][:attributes]).to have_key(:origin_tag)
   end
 
+  it 'does not create a new character' do
+    character_params = { origin: 'Capcom vs. SNK 2'}
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+    post '/api/v1/characters', headers: headers, params: JSON.generate(character: character_params)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+  end
+
   it 'updates an existing character origin' do
     character = Character.create!(origin: 'Fatal Fury', origin_tag: 'ff')
     character_params = { origin: 'Fatal Fury Special', origin_tag: 'ffs' }
