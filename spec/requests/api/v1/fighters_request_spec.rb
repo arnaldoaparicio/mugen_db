@@ -48,4 +48,22 @@ RSpec.describe 'Fighters API' do
     expect(response).to be_successful
     expect(new_spiderman.name).to eq('Spider-Man')
   end
+
+  it 'unsuccessfully updates an existing fighter' do
+    mvc = Character.create!(origin: 'Marvel vs. Capcom', origin_tag: 'mvc')
+    spiderman = Fighter.create!(name: 'Spyda-man', character_id: mvc.id)
+
+    expect(spiderman.name).to eq('Spyda-man')
+
+    spiderman_params = { name: '', character_id: mvc.id }
+
+    headers = { 'CONTENT-TYPE' => 'application/json' }
+
+    patch "/api/v1/characters/#{mvc.id}/#{spiderman.id}", headers: headers, params: JSON.generate(fighter: spiderman_params)
+
+    new_spiderman = Fighter.find(spiderman.id)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(422)    
+  end
 end
