@@ -45,4 +45,15 @@ RSpec.describe 'User API' do
 
     expect(response.status).to eq(400)
   end
+
+  it 'unsuccessfully creates a new user' do
+    user_params = { email: 'jake@mail.com',
+                    admin: true }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+
+    post '/api/v1/users', headers: headers, params: JSON.generate(user: user_params)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+  end
 end
