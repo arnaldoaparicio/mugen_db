@@ -4,7 +4,7 @@ RSpec.describe 'Fighters API' do
   it 'creates a new fighter' do
     series1 = Character.create!(origin: 'Marvel vs Series/X-COTA', origin_tag: 'mvsx')
 
-    fighter_params = { name: 'Spiderman', character_id: series1.id }
+    fighter_params = { name: 'Spiderman', name_tag: 'mvsxspiderman', character_id: series1.id }
 
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
@@ -33,7 +33,7 @@ RSpec.describe 'Fighters API' do
 
   it 'edits an existing fighter' do
     mvc = Character.create!(origin: 'Marvel vs. Capcom', origin_tag: 'mvc')
-    spiderman = Fighter.create!(name: 'Spyda-man', character_id: mvc.id)
+    spiderman = Fighter.create!(name: 'Spyda-man', name_tag: 'mvcspiderman', character_id: mvc.id)
 
     expect(spiderman.name).to eq('Spyda-man')
 
@@ -51,7 +51,7 @@ RSpec.describe 'Fighters API' do
 
   it 'unsuccessfully updates an existing fighter' do
     mvc = Character.create!(origin: 'Marvel vs. Capcom', origin_tag: 'mvc')
-    spiderman = Fighter.create!(name: 'Spyda-man', character_id: mvc.id)
+    spiderman = Fighter.create!(name: 'Spyda-man', name_tag: 'mvcspiderman', character_id: mvc.id)
 
     expect(spiderman.name).to eq('Spyda-man')
 
