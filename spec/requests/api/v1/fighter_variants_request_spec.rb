@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'FighterVariants API' do
   it 'creates a new fighter variant' do
     series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
-    fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
+    fighter = Fighter.create!(name: 'Ryu', name_tag: 'mvsryu', character_id: series1.id)
 
     fighter_variant_params = { name: 'Ryu',
                                author: 'Kamekaze',
@@ -41,7 +41,7 @@ RSpec.describe 'FighterVariants API' do
 
   it "updates an existing fighter variant's name" do
     series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
-    fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
+    fighter = Fighter.create!(name: 'Ryu', name_tag: 'mvsryu', character_id: series1.id)
     fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
 
     expect(fighter_variant_ryu.name).to eq('Ryu')
@@ -63,7 +63,7 @@ RSpec.describe 'FighterVariants API' do
 
     it "updates an existing fighter variant's author" do
     series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
-    fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
+    fighter = Fighter.create!(name: 'Ryu', name_tag: 'mvsryu', character_id: series1.id)
     fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
 
     expect(fighter_variant_ryu.author).to eq('Kamekaze')
@@ -85,7 +85,7 @@ RSpec.describe 'FighterVariants API' do
 
   it 'does not update an existing fighter variant' do
     series1 = Character.create!(origin: 'Marvel Vs. Series', origin_tag: 'mvs')
-    fighter = Fighter.create!(name: 'Ryu', character_id: series1.id)
+    fighter = Fighter.create!(name: 'Ryu', name_tag: 'mvsryu', character_id: series1.id)
     fighter_variant_ryu = FighterVariant.create!(name: 'Ryu', author: 'Kamekaze', website: 'https://mugenguild.com', game_name: 'Marvel vs. Capcom 2', fighter_id: fighter.id)
 
     expect(fighter_variant_ryu.author).to eq('Kamekaze')
