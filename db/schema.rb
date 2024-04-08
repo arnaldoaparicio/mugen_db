@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_08_121403) do
 
   create_table "fighters", force: :cascade do |t|
     t.string "name"
+    t.string "name_tag"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "character_id"
