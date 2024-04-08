@@ -5,5 +5,6 @@ RSpec.describe Fighter, type: :model do
     it { should belong_to :character }
     it { should have_many :fighter_variants }
     it { should validate_presence_of :name}
+    it { should validate_presence_of :name_tag}
   end
 end
