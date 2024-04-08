@@ -15,6 +15,6 @@ class Fighter < ApplicationRecord
   private
   
   def set_slug
-    self.slug = name.to_s.parameterize
+    self.slug = name_tag.to_s.parameterize
   end
 end
