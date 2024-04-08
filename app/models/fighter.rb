@@ -5,6 +5,8 @@ class Fighter < ApplicationRecord
 
   scope :alphabetical_name , -> { order(name: :asc) }
 
+  after_validation :set_slug, only: [:create, :update]
+
   private
   
   def set_slug
