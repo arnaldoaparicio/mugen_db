@@ -7,6 +7,10 @@ class Fighter < ApplicationRecord
 
   after_validation :set_slug, only: [:create, :update]
 
+
+  def to_param
+    "#{id}-#{slug}"
+  end
   private
   
   def set_slug
