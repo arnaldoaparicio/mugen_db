@@ -26,9 +26,9 @@ RSpec.describe 'Characters API' do
   it 'has game series with several fighters/characters' do
     series1 = Character.create!(origin: 'The Fallen Angel', origin_tag: 'tfa')
     series2 = Character.create!(origin: 'Capcom vs. SNK Series', origin_tag: 'cvs')
-    fighter = Fighter.create!(name: 'Ryu', character_id: series2.id)
-    fighter2 = Fighter.create!(name: 'Guile', character_id: series2.id)
-    fighter3 = Fighter.create!(name: 'Roche', character_id: series1.id)
+    fighter = Fighter.create!(name: 'Ryu', name_tag: 'cvsryu', character_id: series2.id)
+    fighter2 = Fighter.create!(name: 'Guile', name_tag: 'cvsguile', character_id: series2.id)
+    fighter3 = Fighter.create!(name: 'Roche', name_tag: 'tfaroche', character_id: series1.id)
 
     get "/api/v1/characters/#{series2.id}"
 
@@ -47,7 +47,7 @@ RSpec.describe 'Characters API' do
 
   it 'shows the fighter variants' do
     series2 = Character.create!(origin: 'Capcom vs. SNK Series', origin_tag: 'cvs')
-    fighter = Fighter.create!(name: 'Ryu', character_id: series2.id)
+    fighter = Fighter.create!(name: 'Ryu', name_tag: 'cvsryu', character_id: series2.id)
     variant1 = FighterVariant.create!(name: 'Ryu', author: 'Warusaki3', website: 'http://mugenguild.com/', game_name: 'Capcom vs. SNK 2', fighter_id: fighter.id)
     variant2 = FighterVariant.create!(name: 'Ryu', author: 'Phantom.of.the.Server', website: 'https://mugen-infantry.net/', game_name: 'Capcom vs. SNK', fighter_id: fighter.id)
 
