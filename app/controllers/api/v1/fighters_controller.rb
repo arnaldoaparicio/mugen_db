@@ -20,6 +20,6 @@ class Api::V1::FightersController < ApplicationController
   private
 
   def fighter_params
-    params.require(:fighter).permit(:name, :character_id)
+    params.require(:fighter).permit(:name, :name_tag, :character_id)
   end
 end
