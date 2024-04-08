@@ -1,6 +1,7 @@
 class Fighter < ApplicationRecord
   belongs_to :character
   validates_presence_of :name
+  validates_presence_of :name_tag
   has_many :fighter_variants , -> {includes(:fighter)}
 
   scope :alphabetical_name , -> { order(name: :asc) }
