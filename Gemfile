@@ -27,6 +27,7 @@ gem "nokogiri", ">= 1.16.2"
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jsonapi-serializer'
+gem "rack", ">= 2.2.8.1"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
