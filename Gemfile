@@ -15,7 +15,7 @@ gem 'puma', '>= 5.6.8'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem "nokogiri", ">= 1.16.2"
+# gem "nokogiri", ">= 1.16.2"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -27,7 +27,7 @@ gem "nokogiri", ">= 1.16.2"
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jsonapi-serializer'
-gem "rack", ">= 2.2.8.1"
+# gem "rack", ">= 2.2.8.1"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
